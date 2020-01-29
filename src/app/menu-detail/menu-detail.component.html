@@ -1,0 +1,31 @@
+<p>
+  <b>{{menu.title}}</b>
+</p>
+
+<table class="table table-row">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col" class="text-center">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Sales Taxes</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of menu.data; let i = index;">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{data.product}}</td>
+      <td class="text-center">{{data.quantity}}</td>
+      <td class="text-right">{{data.price | number}}</td>
+      <td class="text-right">{{data.tax | number}}</td>
+      <td class="text-right">{{(data.price + data.tax) | number}}</td>
+    </tr>
+    <tr>
+      <th scope="row" colspan="4" class="text-right">Total:</th>
+      <th scope="row" class="text-right">{{getTotalTax() | number}}</th>
+      <th scope="row" class="text-right">{{getTotalPrice() | number}}</th>
+    </tr>
+  </tbody>
+</table>
